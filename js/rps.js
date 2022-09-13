@@ -1,9 +1,9 @@
-let playerSelection = "scissors";
+let pCount = 0;
+let cCount = 0;
 
-function getComputerChoise() {
+function getComputerChoise(){
     let x = Math.floor(Math.random() * 3 + 1);
-    console.log(x);
-    switch(x) {
+    switch(x){
         case 1:
             //x = "rock"
             return x;
@@ -19,28 +19,52 @@ function getComputerChoise() {
     }
 }
 
-function playRound(playerSelection, getComputerChoise) {
-    playerSelection = playerSelection.toLowerCase();
-    if(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors") {
-        if(playerSelection == "rock" && getComputerChoise == 2) {
-            console.log("You lose! Paper beats Rock.");
-        }else if(playerSelection == "rock" && getComputerChoise == 3) {
-            console.log("You win! Rock beats Scissors.");
-        }else if(playerSelection == "paper" && getComputerChoise == 1) {
-            console.log("You win! Paper beats Rock.");
-        }else if(playerSelection == "paper" && getComputerChoise == 3) {
-            console.log("You lose! Scissors beats Paper.");
-        }else if(playerSelection == "scissors" && getComputerChoise == 1) {
-            console.log("You lose! Rock beats Scissors.");
-        }else if(playerSelection == "scissors" && getComputerChoise == 2) {
-            console.log("You win! Scissors beats Paper.");
-        }else{
-            console.log("It's a tie. Please reload the page.");
-        }
+function playRound(playerSelection, getComputerChoise){
+    if(playerSelection == "rock" && getComputerChoise == 2){
+        cCount++;
+        console.log("You lose this round! Paper beats Rock.");
+    }else if(playerSelection == "rock" && getComputerChoise == 3){
+        pCount++;
+        console.log("You win this round! Rock beats Scissors.");
+    }else if(playerSelection == "paper" && getComputerChoise == 1){
+        pCount++;
+        console.log("You win this round! Paper beats Rock.");
+    }else if(playerSelection == "paper" && getComputerChoise == 3){
+        cCount++;
+        console.log("You lose this round! Scissors beats Paper.");
+    }else if(playerSelection == "scissors" && getComputerChoise == 1){
+        cCount++;
+        console.log("You lose this round! Rock beats Scissors.");
+    }else if(playerSelection == "scissors" && getComputerChoise == 2){
+        pCount++;
+        console.log("You win this round! Scissors beats Paper.");
     }else{
-        console.log("Please only input rock, paper or scissors and reload the page.");
+        console.log("This round is a tie.");
     }
+    
     
 }
 
-playRound(playerSelection, getComputerChoise());
+function game(){
+    let i = 1;
+    while(i <= 5){
+        let playerSelection = prompt("Please enter rock, paper or scissors");
+        playerSelection = playerSelection.toLowerCase();
+        if(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"){
+            playRound(playerSelection, getComputerChoise());
+            i++;
+        }else{
+            console.log("Please only enter rock, paper or scissors.");
+        }
+    }
+
+    if(pCount > cCount){
+        console.log("You win the game! \nYour Points: " + pCount + "\nComputer: " + cCount);
+    }else if(pCount < cCount){
+        console.log("You lose the game! \nYour Points: " + pCount + "\nComputer: " + cCount);
+    }else{
+        console.log("It's a tie. \nYour Points: " + pCount + "\nComputer: " + cCount);
+    }
+}
+
+game();
