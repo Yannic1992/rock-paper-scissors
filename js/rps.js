@@ -2,21 +2,7 @@ let pCount = 0;
 let cCount = 0;
 
 function getComputerChoise(){
-    let x = Math.floor(Math.random() * 3 + 1);
-    switch(x){
-        case 1:
-            //x = "rock"
-            return x;
-            break;
-        case 2:
-            //x = "paper"
-            return x;
-            break;
-        case 3:
-            //x = "scissors"
-            return x;
-            break;
-    }
+    return Math.floor(Math.random() * 3 + 1);
 }
 
 function playRound(playerSelection, getComputerChoise){
@@ -45,7 +31,7 @@ function playRound(playerSelection, getComputerChoise){
     
 }
 
-function game(){
+/*function game(){
     let i = 1;
     while(i <= 5){
         let playerSelection = prompt("Please enter rock, paper or scissors");
@@ -67,4 +53,4 @@ function game(){
     }
 }
 
-game();
+game();*/
