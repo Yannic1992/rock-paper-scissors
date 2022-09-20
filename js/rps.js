@@ -1,6 +1,5 @@
 let pCount = 0;
 let cCount = 0;
-let playerSelection;
 let roundNumber = 1;
 const buttons = document.querySelectorAll("button");
 
@@ -42,23 +41,19 @@ function playRound(playerSelection, getComputerChoise){
         });
         if(pCount > cCount){
             winner.textContent = "You win the game! Please reload the page.";
-        }else if(pCount < cCount){
-            winner.textContent = "You lose the game! Please reload the page."
         }else{
-            winner.textContent = "The game is a tie.";
+            winner.textContent = "You lose the game! Please reload the page."
         }
     }
 }
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        playerSelection = button.className;
+        let playerSelection = button.className;
         playRound(playerSelection, getComputerChoise());
         roundNumber++;
         const roundCount = document.querySelector(".round-count");
-        roundCount.textContent = `Round: ${roundNumber}`;
-        
-        
+        roundCount.textContent = `Round: ${roundNumber}`;  
     });
 });
 
